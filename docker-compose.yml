@@ -1,0 +1,28 @@
+services:
+  hyperf-app:
+    container_name: hyperf-app
+    build:
+      context: .
+    volumes:
+      - ./:/opt/www
+    ports:
+      - 9501:9501
+    environment:
+      - APP_ENV=dev
+      - SCAN_CACHEABLE=false
+  
+  hyperf-db:
+    image: mysql:8.4
+    container_name: hyperf-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3306:3306"
+
+networks:
+  default:
+    name: hyperf-network
