@@ -16,7 +16,7 @@ Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@i
 
 Router::addGroup('/product', function () {
     Router::addRoute(['POST'], '/Create', 'App\Controller\ProductController@create');
-    Router::addRoute(['GET'], '/', 'App\Controller\ProductController@find');
+    Router::addRoute(['POST'], '/', 'App\Controller\ProductController@find');
     Router::addRoute(['GET'], '/List', 'App\Controller\ProductController@list');
     Router::addRoute(['POST'], '/Delete', 'App\Controller\ProductController@delete');
     Router::addRoute(['POST'], '/Update', 'App\Controller\ProductController@update');
